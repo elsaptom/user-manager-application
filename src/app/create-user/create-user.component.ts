@@ -45,6 +45,7 @@ created: boolean;
         },
         (error) => {
           console.log(error);
+          this.toastr.error('Create User Failed', 'Error');
           
         }
       );

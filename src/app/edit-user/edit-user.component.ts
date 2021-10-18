@@ -74,6 +74,7 @@ export class EditUserComponent implements OnInit {
         }, 3000);
         },
         (error) => {
+          this.toastr.error('User Update Failed', 'Error');
           console.log(error);
           
         }

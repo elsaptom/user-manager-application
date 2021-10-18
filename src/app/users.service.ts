@@ -24,10 +24,10 @@ export class UsersService {
     });
   }
 
-  updateUser(id: any): Observable<any>{
+  updateUser(user: any): Observable<any>{
     const url = this.baseUrl + "users";
-    return this.http.put<any>(url, {
-      params: {id: id}
+    return this.http.put<any>(url, 
+      {user: user
     });
   }
 

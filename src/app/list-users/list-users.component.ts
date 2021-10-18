@@ -55,9 +55,10 @@ export class ListUsersComponent implements OnInit {
      deleteUser(id:any) {
       this.userService.deleteUser(id).subscribe(
         (success) => {
-          // this.status = true;
-          this.toastr.success('User Created Successfully', 'Success');
-
+          this.toastr.success('User Deleted Successfully', 'Success');
+        },
+        (error) => {
+          this.toastr.error('Delete User Failed', 'Error');
         }
       )
     }
