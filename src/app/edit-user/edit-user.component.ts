@@ -2,6 +2,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../users.service';
 
@@ -20,7 +21,7 @@ export class EditUserComponent implements OnInit {
   constructor(private userService: UsersService, 
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder,
-    private router: Router, private toastr: ToastrService) { }
+    private router: Router, private toastr: ToastrService, private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -44,8 +45,10 @@ export class EditUserComponent implements OnInit {
    * Method to get user details
    */
   getUser(id: any) {
+    this.spinner.show();
     this.userService.viewUser(id).subscribe(
       (success) => {
+        this.spinner.hide();
         this.user = success.data;
         this.userForm.get('email')?.setValue(this.user.email);
         this.userForm.get('firstname')?.setValue(this.user.first_name);
@@ -55,6 +58,7 @@ export class EditUserComponent implements OnInit {
         this.userForm.get('pincode')?.setValue(this.user.pincode);
       },
       (error) => {
+        this.spinner.hide();
         this.noUser = true;
       }
     )
@@ -63,17 +67,20 @@ export class EditUserComponent implements OnInit {
   update() {
     this.isSubmitted = true;
     if (this.userForm.valid) {
+      this.spinner.show();
       console.log(this.userForm.value);
       this.userService.updateUser(this.userForm.value).subscribe(
         (success) => {
+          this.spinner.hide();
           console.log('test');
           this.created = true;
           this.toastr.success('User Updated Successfully', 'Success');
           setTimeout(()=>{                         
             this.router.navigate(['/list-users']);
-        }, 3000);
+        }, 2000);
         },
         (error) => {
+          this.spinner.hide();
           this.toastr.error('User Update Failed', 'Error');
           console.log(error);
           

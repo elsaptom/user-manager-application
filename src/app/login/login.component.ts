@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
 
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, 
     private authService: AuthService, 
     private toastr: ToastrService,
-    private router: Router) { }
+    private router: Router,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,14 +34,17 @@ export class LoginComponent implements OnInit {
   Method invoked on click of login button
   */
   login(): void {
-    this.isSubmitted = true;
+      this.isSubmitted = true;
     if (this.loginForm.valid) {
+      this.spinner.show();
       this.authService.login(this.loginForm.value).subscribe(
         (success) => {
-          localStorage.setItem('ACCESS_TOKEN', JSON.stringify(success));
+          this.spinner.hide();
+           localStorage.setItem('ACCESS_TOKEN', JSON.stringify(success));
           this.router.navigate(['/list-users'])
         },
         (error) => {
+          this.spinner.hide();
             this.toastr.error('Invalid Credentials', 'Error');
         }
       );

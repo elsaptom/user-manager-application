@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEdit, faEye, faPlusSquare, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
@@ -19,7 +20,7 @@ export class ListUsersComponent implements OnInit {
   edit = faEdit;
   delete = faTrashAlt;
   constructor(private userService: UsersService, private router: Router, private authService: AuthService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService, private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -27,8 +28,10 @@ export class ListUsersComponent implements OnInit {
 
   /*Method to call get user list api */
   getUsers() {
+    this.spinner.show();
     this.userService.getUsers(this.page).subscribe(
       (success) => {
+    this.spinner.hide();
         this.users = success.data;
       }
     )
@@ -53,11 +56,14 @@ export class ListUsersComponent implements OnInit {
    * Method to delete user details
    */
      deleteUser(id:any) {
+    this.spinner.show();
       this.userService.deleteUser(id).subscribe(
         (success) => {
+          this.spinner.hide();
           this.toastr.success('User Deleted Successfully', 'Success');
         },
         (error) => {
+    this.spinner.hide();
           this.toastr.error('Delete User Failed', 'Error');
         }
       )

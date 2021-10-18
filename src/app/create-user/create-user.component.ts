@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../users.service';
 
@@ -13,7 +14,8 @@ export class CreateUserComponent implements OnInit {
 userForm: FormGroup;
 isSubmitted: boolean;
 created: boolean;
-  constructor(private formBuilder: FormBuilder, private userService: UsersService, private router: Router, private toastr:ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UsersService, 
+    private router: Router, private toastr:ToastrService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -33,17 +35,20 @@ created: boolean;
   create() {
     this.isSubmitted = true;
     if (this.userForm.valid) {
+    this.spinner.show();  
       console.log(this.userForm.value);
       this.userService.createUser(this.userForm.value).subscribe(
         (success) => {
+    this.spinner.hide();
           console.log('test');
           this.created = true;
           this.toastr.success('User Created Successfully', 'Success');
           setTimeout(()=>{                          
             this.router.navigate(['/list-users']);
-        }, 3000);
+        }, 2000);
         },
         (error) => {
+    this.spinner.hide();
           console.log(error);
           this.toastr.error('Create User Failed', 'Error');
           

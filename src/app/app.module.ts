@@ -15,6 +15,8 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { SpinnersAngularModule } from 'spinners-angular';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     ToastrModule.forRoot(),
     NgxPaginationModule,
     FontAwesomeModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SpinnersAngularModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
