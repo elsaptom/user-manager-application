@@ -1,0 +1,72 @@
+.update {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 25px;
+}
+
+.update h2 {
+    margin-top: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.head-color {
+    color: rgb(7, 7, 85);
+}
+
+.update input {
+    box-sizing: border-box;
+    display: block;
+    width: 80%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+    margin: 0 auto;
+  }
+  
+  .update input[type="email"],
+  .update input[type="username"],
+  .update input[type="email"],
+  .update input[type="firstname"],
+  .update input[type="lastname"],
+  .update input[type="pincode"],
+  .update input[type="address"] {
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+  }
+  
+  .update input[type="email"]:focus,
+  .update input[type="username"]:focus,
+  .update input[type="email"]:focus,
+  .update input[type="firstname"]:focus,
+  .update input[type="lastname"]:focus,
+  .update input[type="pincode"]:focus,
+  .update input[type="address"]:focus {
+    border-color: #888;
+  }
+  
+  .update input[type="submit"] {
+    background: rgb(1, 29, 51);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .update input[type="submit"]:hover {
+    background: #17c;
+  }
+  
+  .update input[type="submit"]:focus {
+    border-color: #05a;
+  }
+
+  .help-block {
+      color: red;
+  }

@@ -1,0 +1,72 @@
+.create {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 25px;
+}
+
+.create h2 {
+    margin-top: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.head-color {
+    color: rgb(7, 7, 85);
+}
+
+.create input {
+    box-sizing: border-box;
+    display: block;
+    width: 80%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+    margin: 0 auto;
+  }
+  
+  .create input[type="email"],
+  .create input[type="username"],
+  .create input[type="email"],
+  .create input[type="firstname"],
+  .create input[type="lastname"],
+  .create input[type="pincode"],
+  .create input[type="address"] {
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+  }
+  
+  .create input[type="email"]:focus,
+  .create input[type="username"]:focus,
+  .create input[type="email"]:focus,
+  .create input[type="firstname"]:focus,
+  .create input[type="lastname"]:focus,
+  .create input[type="pincode"]:focus,
+  .create input[type="address"]:focus {
+    border-color: #888;
+  }
+  
+  .create input[type="submit"] {
+    background: rgb(1, 29, 51);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .create input[type="submit"]:hover {
+    background: #17c;
+  }
+  
+  .create input[type="submit"]:focus {
+    border-color: #05a;
+  }
+
+  .help-block {
+      color: red;
+  }

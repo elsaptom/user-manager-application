@@ -1,0 +1,59 @@
+<div class="container">
+    <div>
+        <h1 class="text-center head-color"> Update User </h1>
+        <div *ngIf="noUser" class="update text-center">
+            <h3>No User Found</h3>
+</div>
+        <div *ngIf="!noUser" class="update text-center">
+          <form [formGroup]="userForm" class="user-container" (ngSubmit)="update()">
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.email.errors }">
+              <input type="email" placeholder="Email" formControlName="email">
+            </p>
+            <div *ngIf="isSubmitted && formControl.email.errors" class="help-block">
+              <div *ngIf="formControl.email.errors.required">Email is required</div>
+              <div *ngIf="formControl.email.errors.email">Email is invalid</div>
+            </div>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.username.errors }">
+              <input type="username" placeholder="Username" formControlName="username">
+            </p>
+            <div *ngIf="isSubmitted && formControl.username.errors" class="help-block">
+              <div *ngIf="formControl.username.errors.required">Username is required</div>
+            </div>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.firstname.errors }">
+              <input type="firstname" placeholder="Firstname" formControlName="firstname">
+            </p>
+        
+            <div *ngIf="isSubmitted && formControl.firstname.errors" class="help-block">
+              <div *ngIf="formControl.firstname.errors.required">Firstname is required</div>
+            </div>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.lastname.errors }">
+              <input type="lastname" placeholder="Lastname" formControlName="lastname">
+            </p>
+        
+            <div *ngIf="isSubmitted && formControl.lastname.errors" class="help-block">
+              <div *ngIf="formControl.lastname.errors.required">Lastname is required</div>
+            </div>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.address.errors }">
+              <input type="address" placeholder="Address" formControlName="address">
+            </p>
+        
+            <div *ngIf="isSubmitted && formControl.address.errors" class="help-block">
+              <div *ngIf="userForm.value.address && userForm.value.address.length < 10">Address is invalid</div>
+              <div *ngIf="formControl.address.errors.required">Address is required</div>
+            </div>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControl.pincode.errors }">
+              <input type="pincode" placeholder="Pincode" formControlName="pincode">
+            </p>
+        
+            <div *ngIf="isSubmitted && formControl.pincode.errors" class="help-block">
+              <div *ngIf="formControl.pincode.errors.required">Pincode is required</div>
+              <div *ngIf="formControl.pincode.errors.pattern">Pincode is invalid</div>
+            </div>
+        
+            <p>
+              <input type="submit" value="Update User">
+            </p>
+          </form>
+        </div>
+    </div>
+</div>

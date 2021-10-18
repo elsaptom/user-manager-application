@@ -1,0 +1,46 @@
+.user-list {
+    border: 1px solid #ccc;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 5px;
+}
+
+.user-row {
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #08007a;
+}
+
+.user-img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+}
+
+.head-row {
+    border-bottom: 1px solid #08007a;
+    display: flex;
+    align-items: center;
+}
+
+.user-table {
+    border: 1px solid #08007a;
+    padding: 15px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.paginator {
+    margin-top: 15px;
+    float: right;
+}
+
+.click-icon {
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}

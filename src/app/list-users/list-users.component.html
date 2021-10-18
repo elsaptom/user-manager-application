@@ -1,0 +1,46 @@
+<div class="container">
+    <div><h3 class="text-center">Welcome to User Management App</h3>
+    <div class="text-right" style="color: rgb(0, 0, 155);"><a (click)="logout()" href="">Logout</a></div>
+    <div class="user-list"><h2 class="text-center">User List</h2>
+        <div class="user-table">
+            <div class="row head-row no-margin">
+                <div class="col-md-3">
+                    User
+                </div>
+                <div class="col-md-3">
+                    Name
+                </div>
+                <div class="col-md-3">
+                    Email Address
+                </div>
+                <div class="col-md-3" style="display: flex;align-items: center; justify-content: space-between;">
+                    Actions
+                    <fa-icon (click)="createUser()" class="fa-2x click-icon" [icon]="add"></fa-icon>
+                </div>
+            </div>
+            <div class="" *ngFor="let user of users | paginate:{itemsPerPage: 3, currentPage:page}">
+                <div class="row col-md-12 user-row no-margin">
+                <div class="col-md-3">
+                    <img class="user-img" src={{user.avatar}}>
+                </div>
+                <div class="col-md-3">
+                    {{user.email}}
+                </div>
+                <div class="col-md-3">
+                    {{user.first_name}} {{user.last_name}}
+                </div>
+                <div class="col-md-3">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <fa-icon class="click-icon" (click)="viewUser(user.id)" [icon]="view"></fa-icon>
+                        <fa-icon class="click-icon" (click)="editUser(user.id)" [icon]="edit"></fa-icon>
+                        <fa-icon class="click-icon" (click)="deleteUser(user.id)" [icon]="delete"></fa-icon>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="paginator">
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="view-user">
+        <div *ngIf="noUser">
+         <h3>No User Found</h3>
+        </div>
+        <div *ngIf="user && !noUser">
+            <h3>User Details</h3>
+            <div class="">
+                <div>
+                    <img class="user-img" src={{user.avatar}}>
+                </div>
+                <div>{{user.first_name}} {{user.last_name}}</div> 
+                   <div> {{user.email}}</div>
+            </div>           </div>
+    </div>
+</div>
